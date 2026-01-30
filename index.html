@@ -26,23 +26,35 @@
       text-align: center;
     }
 
-    .post-btn {
-      display: inline-block;
-      padding: 12px 18px;
+    .post-box {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 16px;
+      margin: 20px 0;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: 1px solid #bbb;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 12px;
+      padding: 10px 18px;
       background: #4CAF50;
       color: white;
-      text-decoration: none;
+      border: none;
       border-radius: 8px;
-      font-weight: bold;
-      font-size: 16px;
+      font-size: 15px;
+      cursor: pointer;
     }
 
-    .post-btn:hover {
+    button:hover {
       background: #43a047;
-    }
-
-    .section {
-      margin-top: 32px;
     }
   </style>
 </head>
@@ -51,38 +63,47 @@
   <div class="book">
     <h1>📘 Sổ lưu niệm</h1>
 
-    <!-- NÚT ĐĂNG BÀI -->
-    <div style="text-align:center; margin:20px 0;">
-      <a class="post-btn"
-         href="https://github.com/catnoname2011/soluuniem/issues/new"
-         target="_blank">
-        ✍️ Đăng bài lưu niệm
-      </a>
+    <!-- Ô ĐĂNG BÀI -->
+    <div class="post-box">
+      <h3>✍️ Đăng bài lưu niệm</h3>
+
+      <input id="title" placeholder="Tiêu đề bài viết">
+      <textarea id="content" rows="4" placeholder="Viết kỷ niệm của bạn ở đây..."></textarea>
+      <input id="media" placeholder="Link ảnh hoặc video (YouTube, Drive...)">
+
+      <button onclick="post()">📝 Đăng bài</button>
     </div>
 
-    <p style="text-align:center;">
-      Nơi lưu giữ kỷ niệm tuổi học trò 🌱
+    <p>
+      📚 <a href="https://github.com/catnoname2011/soluuniem/issues" target="_blank">
+        Xem các bài đã đăng
+      </a>
     </p>
-
-    <!-- HƯỚNG DẪN -->
-    <div class="section">
-      <h2>📝 Cách đăng bài</h2>
-      <ol>
-        <li>Bấm nút <b>✍️ Đăng bài lưu niệm</b></li>
-        <li>Nhập tiêu đề</li>
-        <li>Viết nội dung, dán link ảnh hoặc video</li>
-        <li>Bấm <b>Submit new issue</b></li>
-      </ol>
-    </div>
-
-    <!-- XEM BÀI -->
-    <div class="section">
-      <h2>📚 Các bài đã đăng</h2>
-      <a href="https://github.com/catnoname2011/soluuniem/issues"
-         target="_blank">
-        👉 Xem tất cả bài lưu niệm
-      </a>
-    </div>
   </div>
+
+  <script>
+    function post() {
+      const title = document.getElementById("title").value;
+      const content = document.getElementById("content").value;
+      const media = document.getElementById("media").value;
+
+      if (!title || !content) {
+        alert("Vui lòng nhập tiêu đề và nội dung!");
+        return;
+      }
+
+      const body =
+        content +
+        "\n\n---\n" +
+        (media ? "📎 Ảnh / Video:\n" + media : "");
+
+      const url =
+        "https://github.com/catnoname2011/soluuniem/issues/new" +
+        "?title=" + encodeURIComponent(title) +
+        "&body=" + encodeURIComponent(body);
+
+      window.open(url, "_blank");
+    }
+  </script>
 </body>
 </html>
