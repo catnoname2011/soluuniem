@@ -4,45 +4,77 @@
   <meta charset="UTF-8">
   <title>Sổ lưu niệm lớp</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f5f1ea;
+      background: #f2efe9;
       margin: 0;
       padding: 20px;
     }
     .book {
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
       background: white;
-      padding: 20px;
+      padding: 24px;
       border-radius: 12px;
     }
     h1 {
       text-align: center;
     }
-    img {
-      max-width: 100%;
+    .post-btn {
+      display: inline-block;
+      padding: 12px 18px;
+      background: #4CAF50;
+      color: white;
+      text-decoration: none;
       border-radius: 8px;
+      font-weight: bold;
+    }
+    .post-btn:hover {
+      background: #43a047;
+    }
+    .section {
+      margin-top: 32px;
     }
   </style>
 </head>
+
 <body>
   <div class="book">
     <h1>📘 Sổ lưu niệm lớp 9A1</h1>
-    <p>Nơi lưu giữ kỷ niệm tuổi học trò.</p>
+    <p style="text-align:center;">
+      Nơi lưu giữ kỷ niệm tuổi học trò
+    </p>
 
-    <h2>📸 Ảnh kỷ niệm</h2>
-    <img src="images/lop.jpg">
+    <!-- NÚT ĐĂNG BÀI -->
+    <div style="text-align:center; margin:20px 0;">
+      <a class="post-btn"
+         href="https://github.com/USERNAME/TEN-REPO/issues/new"
+         target="_blank">
+        ✍️ Đăng bài lưu niệm
+      </a>
+    </div>
 
-    <h2>🎥 Video</h2>
-    <iframe width="100%" height="315"
-      src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-      frameborder="0" allowfullscreen>
-    </iframe>
+    <!-- HƯỚNG DẪN -->
+    <div class="section">
+      <h2>📝 Cách đăng bài</h2>
+      <ol>
+        <li>Bấm nút <b>✍️ Đăng bài lưu niệm</b></li>
+        <li>Nhập tiêu đề</li>
+        <li>Viết nội dung + dán link ảnh / video</li>
+        <li>Bấm <b>Submit new issue</b></li>
+      </ol>
+    </div>
 
-    <h2>💬 Bình luận</h2>
-    <!-- Bình luận sẽ thêm ở bước sau -->
+    <!-- XEM BÀI -->
+    <div class="section">
+      <h2>📚 Các bài đã đăng</h2>
+      <a href="https://github.com/USERNAME/TEN-REPO/issues"
+         target="_blank">
+        👉 Xem danh sách bài lưu niệm
+      </a>
+    </div>
   </div>
 </body>
 </html>
