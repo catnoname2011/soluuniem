@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8" />
-<title>Sổ lưu niệm tuổi học trò</title>
-<link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<title>Sổ lưu niệm 9A1</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 
-<div class="book">
-<h1>📘 Sổ lưu niệm tuổi học trò</h1>
-<p>Viết vài dòng cho thanh xuân ✨</p>
+<div class="container">
+<h1>📘 Sổ lưu niệm 9A1</h1>
 
 
-<div class="post-box">
-<input id="title" placeholder="Tiêu đề bài viết..." />
-<textarea id="content" placeholder="Nội dung bài viết...
-(Ảnh & video sẽ dán ở bước sau)"></textarea>
-<button onclick="postIssue()">📝 Đăng bài</button>
+<button id="openPost">✍️ Đăng bài</button>
+
+
+<div id="postBox" class="hidden">
+<input id="title" placeholder="Tiêu đề bài viết">
+<textarea id="content" placeholder="Viết kỷ niệm..."></textarea>
+<div id="pasteArea">📋 Dán ảnh vào đây (Ctrl + V)</div>
+<img id="preview" />
+<button onclick="submitPost()">📌 Đăng</button>
 </div>
 
 
-<hr />
-
-
 <h2>📚 Các bài đã đăng</h2>
-<div id="posts">Đang tải bài viết...</div>
+<div id="posts"></div>
 </div>
 
 
