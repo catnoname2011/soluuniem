@@ -14,14 +14,19 @@ div.className = 'post';
 
 
 let body = issue.body || '';
+
+// Render ảnh Markdown ![](url)
+body = body.replace(/!\[[^\]]*\]\((.*?)\)/g, '<img src="$1">');
+
+// Xuống dòng
 body = body.replace(/\n/g, '<br>');
 
-
 div.innerHTML = `
-<h3>${issue.title}</h3>
-<p>${body}</p>
-<a target="_blank" href="${issue.html_url}">💬 Bình luận</a>
+  <h3>${issue.title}</h3>
+  <div>${body}</div>
+  <a target="_blank" href="${issue.html_url}">💬 Bình luận</a>
 `;
+
 
 
 box.appendChild(div);
