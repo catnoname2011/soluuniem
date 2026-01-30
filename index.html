@@ -2,35 +2,49 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Sổ lưu niệm</title>
+  <title>Sổ lưu niệm 9A1</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f2efe9;
+      background: #f3efe9;
       margin: 0;
-      padding: 20px;
+      padding: 30px;
     }
 
     .book {
       max-width: 900px;
       margin: auto;
-      background: white;
-      padding: 24px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      background: #fff;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
     }
 
     h1 {
+      margin: 0;
       text-align: center;
     }
 
+    .top-bar {
+      margin-top: 15px;
+      text-align: left;
+    }
+
+    .toggle-btn {
+      color: #2e7d32;
+      cursor: pointer;
+      font-weight: bold;
+      user-select: none;
+    }
+
     .post-box {
+      display: none;
       border: 1px solid #ccc;
       border-radius: 10px;
       padding: 16px;
-      margin: 20px 0;
+      margin-top: 15px;
     }
 
     input, textarea {
@@ -61,20 +75,29 @@
 
 <body>
   <div class="book">
-    <h1>📘 Sổ lưu niệm</h1>
+    <!-- TIÊU ĐỀ -->
+    <h1>📘 Sổ lưu niệm 9A1</h1>
+
+    <!-- ĐĂNG BÀI GÓC TRÁI -->
+    <div class="top-bar">
+      <span class="toggle-btn" onclick="togglePost()">✍️ Đăng bài</span>
+    </div>
 
     <!-- Ô ĐĂNG BÀI -->
-    <div class="post-box">
-      <h3>✍️ Đăng bài lưu niệm</h3>
-
+    <div class="post-box" id="postBox">
       <input id="title" placeholder="Tiêu đề bài viết">
-      <textarea id="content" rows="4" placeholder="Viết kỷ niệm của bạn ở đây..."></textarea>
-      <input id="media" placeholder="Link ảnh hoặc video (YouTube, Drive...)">
+
+      <textarea id="content" rows="4"
+        placeholder="Viết kỷ niệm của bạn ở đây... (Ảnh sẽ dán trực tiếp ở bước sau)"></textarea>
+
+      <input id="video" placeholder="Link video (YouTube / Drive – nếu có)">
+
+      <input id="note" placeholder="Chú thích cho video (không bắt buộc)">
 
       <button onclick="post()">📝 Đăng bài</button>
     </div>
 
-    <p>
+    <p style="margin-top:20px;">
       📚 <a href="https://github.com/catnoname2011/soluuniem/issues" target="_blank">
         Xem các bài đã đăng
       </a>
@@ -82,26 +105,35 @@
   </div>
 
   <script>
+    function togglePost() {
+      const box = document.getElementById("postBox");
+      box.style.display = box.style.display === "none" ? "block" : "none";
+    }
+
     function post() {
       const title = document.getElementById("title").value;
       const content = document.getElementById("content").value;
-      const media = document.getElementById("media").value;
+      const video = document.getElementById("video").value;
+      const note = document.getElementById("note").value;
 
       if (!title || !content) {
         alert("Vui lòng nhập tiêu đề và nội dung!");
         return;
       }
 
-      const body =
-        content +
-        "\n\n---\n" +
-        (media ? "📎 Ảnh / Video:\n" + media : "");
+      let body = content + "\n\n---\n";
+
+      if (video) {
+        body += "🎥 Video:\n" + video + "\n";
+        if (note) body += "📝 Chú thích: " + note + "\n";
+      }
+
+      body += "\n📌 (Ảnh: dán trực tiếp sau khi mở trang đăng bài)";
 
       const url =
         "https://github.com/catnoname2011/soluuniem/issues/new" +
         "?title=" + encodeURIComponent(title) +
         "&body=" + encodeURIComponent(body);
-
 
       window.open(url, "_blank");
     }
